@@ -1,0 +1,89 @@
+1)Show all parts located at London city.
+
+=>SELECT * FROM `p` 
+	WHERE p_city = 'London';
+
+*********************************************************************************************************************
+2)show maximum weight name.
+
+=>SELECT pname FROM `p` 
+	ORDER BY  weight DESC LIMIT 1;
+*********************************************************************************************************************
+3)show all parts name,part number for part color is red supply.
+
+=>SELECT pno,pname FROM `p` 
+	WHERE color='red';
+
+*********************************************************************************************************************
+4)Show suppler name,suppler city who supply part qty more then 200.
+
+=> select s.sname,s.s_city,sp.qty from s,sp
+	where s.sno = sp.sno
+    	AND qty >200 ; 
+
+*********************************************************************************************************************
+5)show second highest weight of part
+
+=> SELECT * FROM p 
+	ORDER BY weight DESC 
+	LIMIT 1 OFFSET 1;
+
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+6) show suppler no and qty for part supply for highest weight part
+
+=> SELECT sp.sno,sp.qty,MAX(p.weight) from sp,p
+	WHERE sp.pno = p.pno;
+
+*********************************************************************************************************************
+7) show suppler name and qty for part color is 'red' suppy
+
+=> SELECT s.sname,sp.qty from s,sp,p
+	WHERE s.sno = sp.sno
+   	AND p.pno = sp.pno
+    	ND p.color = 'red';
+
+*********************************************************************************************************************
+8) show suppler name, part city and qty for suppler status is less then 30 shipment supply.
+
+=> SELECT s.sname,p.p_city,sp.qty FROM s,p,sp
+	WHERE s.sno = sp.sno
+    	AND p.pno = sp.pno
+   	AND s.s_status<30;
+
+*********************************************************************************************************************
+9)show each supplers total qty supply
+
+=> SELECT sno,qty,sum(qty) FROM sp GROUP BY sno
+
+*********************************************************************************************************************
+10) show each parts total qty supply
+
+=> SELECT pno,sum(qty) FROM sp GROUP BY pno
+
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+11) show each parts name total qty supply
+
+=> SELECT p.pname,sp.qty,sum(sp.qty) FROM p,sp
+	WHERE p.pno = sp.pno 
+    	GROUP BY p.pno;
+
+*********************************************************************************************************************
+12) Show each supplers whose suppler number is less then 's4' give total qty supply by each suppler.
+
+=> SELECT sno,sum(qty) 
+	FROM `sp` 
+	WHERE sno<'s4' 
+	GROUP BY sno;
+
+*********************************************************************************************************************
+13) show each suppler whose suppler status is 20 give total qty supply by each suppler.
+
+=> SELECT s.sno,s.sname,sum(sp.qty) 
+	FROM `sp`,s 
+	WHERE sp.sno<'s4' 
+	AND sp.sno= s.sno 
+	GROUP BY sno;
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
