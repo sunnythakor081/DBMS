@@ -61,8 +61,7 @@
 
 => SELECT pno,sum(qty) FROM sp GROUP BY pno
 
----------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------
+*********************************************************************************************************************
 11) show each parts name total qty supply
 
 => SELECT p.pname,sum(sp.qty) FROM p,sp
@@ -86,3 +85,17 @@
         GROUP BY sno;
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
+14)--->emp table  :
+
+
+CREATE TABLE `mca_sanni2024`.`emp` (`emp_id` INT NOT NULL , `emp_name` VARCHAR(35) NOT NULL , `emp_dept_id` INT NOT NULL , `emp_boss_id` INT NOT NULL , `emp_salary` BIGINT NOT NULL , PRIMARY KEY (`emp_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `emp` ADD FOREIGN KEY (`emp_dept_id`) REFERENCES `emp`(`emp_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+*********************************************************************************************************************
+15)--->dept table :
+
+CREATE TABLE `mca_sanni2024`.`dept_id` (`dept_id` INT NOT NULL , `dept_name` VARCHAR(30) NOT NULL , `dept_location` VARCHAR(50) NOT NULL , PRIMARY KEY (`dept_id`)) ENGINE = InnoDB;
+
+
+*********************************************************************************************************************
