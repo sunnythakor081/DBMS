@@ -80,10 +80,9 @@
 *********************************************************************************************************************
 13) show each suppler whose suppler status is 20 give total qty supply by each suppler.
 
-=> SELECT s.sno,s.sname,sum(sp.qty) 
-	FROM `sp`,s 
-	WHERE sp.sno<'s4' 
-	AND sp.sno= s.sno 
-	GROUP BY sno;
+=> SELECT s.sno,s.sname,s.s_status,sum(sp.qty) AS total_qty FROM s,sp
+        WHERE s.sno= sp.sno
+        AND s.s_status= 20 
+        GROUP BY sno;
 ---------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
