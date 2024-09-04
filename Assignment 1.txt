@@ -41,7 +41,7 @@
 => SELECT s.sname,sp.qty from s,sp,p
 	WHERE s.sno = sp.sno
    	AND p.pno = sp.pno
-    	ND p.color = 'red';
+    	AND p.color = 'red';
 
 *********************************************************************************************************************
 8) show suppler name, part city and qty for suppler status is less then 30 shipment supply.
