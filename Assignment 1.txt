@@ -65,9 +65,9 @@
 ---------------------------------------------------------------------------------------------------------------------
 11) show each parts name total qty supply
 
-=> SELECT p.pname,sp.qty,sum(sp.qty) FROM p,sp
+=> SELECT p.pname,sum(sp.qty) FROM p,sp
 	WHERE p.pno = sp.pno 
-    	GROUP BY p.pno;
+    	GROUP BY p.pname;
 
 *********************************************************************************************************************
 12) Show each supplers whose suppler number is less then 's4' give total qty supply by each suppler.
