@@ -99,3 +99,10 @@ CREATE TABLE `mca_sanni2024`.`dept_id` (`dept_id` INT NOT NULL , `dept_name` VAR
 
 
 *********************************************************************************************************************
+
+6---1>SELECT emp.emp_name as "Emp Name", dept.dept_name as "Emp Department", boss.emp_name as "Boss name" ,bdept.dept_name from emp,dept,emp as boss ,dept as bdept WHERE dept.dept_id = emp.emp_dept_id and boss.emp_id = emp.emp_boss_id and bdept.dept_id = boss.emp_dept_id;
+
+6--)2--->select emp.emp_name as Employee_Name,dept.dept_name as Employee_Department,bossname.emp_name as Boss_Name,bossd.dept_name as Boss_Department from emp,dept,emp as bossname,dept as bossd where emp.emp_dept_id=dept.dept_id and emp.emp_boss_id=bossname.emp_id and bossname.emp_dept_id=bossd.dept_id and emp.emp_salary>bossname.emp_salary;
+
+--)SELECT emp.emp_name,dept.dept_name,boss.emp_name,dept.dept_name FROM emp,emp AS boss,dept,dept AS bossdept WHERE emp.emp_boss_id=boss.emp_id AND emp.emp_dept_id=dept.dept_id AND boss.emp_dept_id=bossdept.dept_id AND emp.emp_salary>boss.emp_salary;
+
