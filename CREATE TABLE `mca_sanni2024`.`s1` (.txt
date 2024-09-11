@@ -1,0 +1,59 @@
+CREATE TABLE `mca_sanni2024`.`s1` (`sno` INT(3) NOT NULL , `sname` VARCHAR(50) NOT NULL , `s_status` INT NOT NULL , `s_city` VARCHAR(25) NOT NULL , PRIMARY KEY (`sno`)) ENGINE = InnoDB;
+
+CREATE TABLE `mca_sanni2024`.`p` (`pno` CHAR(3) NOT NULL , `pname` VARCHAR(20) NOT NULL , `color` VARCHAR(10) NOT NULL , `weight` FLOAT(5.2) NOT NULL , `p_city` VARCHAR(25) NOT NULL , PRIMARY KEY (`pno`)) ENGINE = InnoDB;
+
+CREATE TABLE `mca_sanni2024`.`sp` (`sno` CHAR(3) NOT NULL , `pno` CHAR(3) NOT NULL , `qty` INT NOT NULL , PRIMARY KEY (`sno`, `pno`)) ENGINE = InnoDB;
+
+
+
+
+
+insert data-------
+
+s1---->
+
+INSERT INTO `s1` (`sno`, `sname`, `s_status`, `s_city`) VALUES ('S1', 'smit', '20', 'london'), ('S2', 'Jones', '10', 'Paris'), ('S3', 'black', '10', 'paris'), ('S4', 'clark', '20', 'london'), ('S5', 'adams', '30', 'athens')
+
+
+
+p---->
+
+INSERT INTO `p` (`pno`, `pname`, `color`, `weight`, `p_city`) VALUES ('P1', 'mut', 'red', '10.20', 'london'), ('P2', 'bolt', 'green', '17.00', 'paris'), ('P3', 'screw', 'blue', '17.00', 'osio'), ('P4', 'screw', 'red', '14.00', 'london'), ('P5', 'cam', 'blue', '12.00', 'paris'), ('P6', 'cg', 'red', '19.00', 'london')
+
+
+SP----->
+
+INSERT INTO `sp` (`sno`, `pno`, `qty`) VALUES ('S1', 'P1', '300'), ('S1', 'P2', '200'), ('S1', 'P3', '400'), ('S1', 'P4', '200'), ('S1', 'P5', '100'), ('S1', 'P6', '100'), ('S2', 'P1', '300'), ('S2', 'P2', '400'), ('S3', 'P2', '200'), ('S4', 'P2', '200'), ('S4', 'P4', '300'), ('S4', 'P5', '400')
+
+
+
+Dept Table::
+
+CREATE TABLE `mca2024nitesh`.`dept` (`dept_id` INT NOT NULL , `dept_name` VARCHAR(30) NOT NULL , `dept_location` VARCHAR(50) NOT NULL , PRIMARY KEY (`dept_id`)) ENGINE = InnoDB;
+
+Insert data: INSERT INTO `dept` (`dept_id`, `dept_name`, `dept_location`) VALUES ('1', 'computer', 'Ahmedabad'), ('2', 'microBiology', 'sadara'), 
+ ('3', 'management', 'randheja'), ('4', 'main Office', 'Ahmedabad');
+
+
+Emp table::
+
+CREATE TABLE `mca2024nitesh`.`emp` (`emp_id` INT NOT NULL , `emp_name` VARCHAR(35) NOT NULL , `emp_dept_id` INT NOT NULL , `emp_boss_id` INT NOT NULL , `emp_salary` BIGINT NOT NULL , PRIMARY KEY (`emp_id`)) ENGINE = InnoDB;
+
+
+FOREIGN KEY:  ALTER TABLE `emp` ADD FOREIGN KEY (`emp_dept_id`) REFERENCES `dept`(`dept_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+Emp insert queue :
+
+insert into emp values(101,"Nikhil",1,401,210000),
+(102,"Satish",1,101,210000),
+(103,"Vrushali",1,101,175000),
+(201,"Archna",2,401,200000),
+(202,"Tanvi",2,201,135000),
+(203,"Dharti",2,201,175000),
+(301,"Hemali",3,401,235000),
+(302,"Vishal",3,301,180000),
+(303,"Nafish",3,302,199000),
+(401,"Registar",4,401,500000),
+(402,"Bipin",4,401,490000),
+(403,"Narendra",4,402,1000000),
+(404,"Mohan",4,402,800000);
