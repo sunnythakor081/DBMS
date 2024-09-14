@@ -1,4 +1,4 @@
-CREATE TABLE `mca_sanni2024`.`s1` (`sno` INT(3) NOT NULL , `sname` VARCHAR(50) NOT NULL , `s_status` INT NOT NULL , `s_city` VARCHAR(25) NOT NULL , PRIMARY KEY (`sno`)) ENGINE = InnoDB;
+CREATE TABLE `mca_sanni2024`.`s1` (`sno` CHAR(3) NOT NULL , `sname` VARCHAR(50) NOT NULL , `s_status` INT NOT NULL , `s_city` VARCHAR(25) NOT NULL , PRIMARY KEY (`sno`)) ENGINE = InnoDB;
 
 CREATE TABLE `mca_sanni2024`.`p` (`pno` CHAR(3) NOT NULL , `pname` VARCHAR(20) NOT NULL , `color` VARCHAR(10) NOT NULL , `weight` FLOAT(5.2) NOT NULL , `p_city` VARCHAR(25) NOT NULL , PRIMARY KEY (`pno`)) ENGINE = InnoDB;
 
