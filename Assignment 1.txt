@@ -106,3 +106,43 @@ CREATE TABLE `mca_sanni2024`.`dept_id` (`dept_id` INT NOT NULL , `dept_name` VAR
 
 --)SELECT emp.emp_name,dept.dept_name,boss.emp_name,dept.dept_name FROM emp,emp AS boss,dept,dept AS bossdept WHERE emp.emp_boss_id=boss.emp_id AND emp.emp_dept_id=dept.dept_id AND boss.emp_dept_id=bossdept.dept_id AND emp.emp_salary>boss.emp_salary;
 
+
+*********************************************************************************************************************
+new 6--)#1. Show Employee name, employee department name, Boss name, Boss department name
+
+select emp.emp_name as Employee_Name,dept.dept_name as Department_Name,bossn.emp_name as Boss_Name,bossd.dept_name as Boss_Department_Name from
+emp,dept,emp as bossn,dept as bossd where
+emp.emp_dept_id=dept.dept_id and emp.emp_boss_id=bossn.emp_id and bossn.emp_dept_id=bossd.dept_id;
+
+*********************************************************************************************************************
+new 6--)#2. Show Employee name, employee department name, Boss name, Boss department name where employee salary greter then boss salary
+
+select emp.emp_name as Employee_Name,dept.dept_name as Department_Name,bossn.emp_name as Boss_Name,bossd.dept_name as Boss_Department_Name from
+emp,dept,emp as bossn,dept as bossd where
+emp.emp_dept_id=dept.dept_id and emp.emp_boss_id=bossn.emp_id and bossn.emp_dept_id=bossd.dept_id and emp.emp_salary>bossn.emp_salary;
+
+*********************************************************************************************************************
+7)#3.Show Department name and that department maximum salary.
+
+select dept.dept_name,max(emp.emp_salary) from
+emp,dept where
+emp.emp_dept_id=dept.dept_id group by dept.dept_name;
+
+*********************************************************************************************************************
+7)#4. Show employee department name, that department total employee count.
+select dept.dept_name,count(emp.emp_id) from
+emp,dept where
+emp_dept_id=dept.dept_id group by dept.dept_name;
+
+*********************************************************************************************************************
+
+
+*********************************************************************************************************************
+
+
+*********************************************************************************************************************
+
+
+*********************************************************************************************************************
+
+
