@@ -1,0 +1,16 @@
+create trigger ins_sum before insert on accouunt
+   for each row set @sum = @sum + new.amount;
+
+create trigger ins_ransaction before insert on account
+for each row precedes ins_sum
+set
+
+@deposits = @deposits + if(new.amount>0,new.amount,0),
+@withdrals = @withdrals + if (new.amount<0,-new.amount,0);
+
+set @sum =0;
+set @deposits = 0;
+set @withdrals = 0;
+
+insert into account values(137,1400.00),(141,2000.00),(97,-1000.00);
+select @deposits as "deposit amt",@withdrals as "withdrals amt", @sum as "total amt";
