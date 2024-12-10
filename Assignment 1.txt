@@ -32,9 +32,9 @@
 ---------------------------------------------------------------------------------------------------------------------
 6) show suppler no and qty for part supply for highest weight part
 
-=> SELECT sp.sno,sp.qty,MAX(p.weight) from sp,p
-	WHERE sp.pno = p.pno;
-
+=> select sp.sno,sp.qty from sp,p
+where sp.pno = p.pno
+order by p.weight desc limit 1
 *********************************************************************************************************************
 7) show suppler name and qty for part color is 'red' suppy
 
