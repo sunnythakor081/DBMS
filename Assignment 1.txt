@@ -135,12 +135,64 @@ emp,dept where
 emp_dept_id=dept.dept_id group by dept.dept_name;
 
 *********************************************************************************************************************
+*QUE-8*
+=======
+
+CREATE TABLE account( acc_no int, amount decimal(10,2));
+
+*QUE-9*
+=======
+
+CREATE OR REPLACE TRIGGER ins_sum1
+	BEFORE INSERT on account 
+	FOR EACH ROW
+	set @sum = @sum + NEW.amount;
+	
+SET @sum=0;
+
+INSERT INTO account VALUES(201,200.50),(202,-100.50),(203,50.50);
+
+	SELECT @SUM as 'total_inserted_amount';
+
 
 
 *********************************************************************************************************************
+*QUE-10*
+=======
+CREATE TRIGGER ins_sum1 BEFORE INSERT on ACCOUNT
+	for each row set @sum = @sum + new.amount;
+	
+CREATE TRIGGER ins_transaction before INSERT on account
+	for EACH ROW PRECEDES ins_sum1
+	set 
+	@deposits = @deposits + if(new.amount>0,new.amount,0),
+	@withdrawals = @withdrawals + if(new.amount<0,-new.amount,0);
+set @sum = 0;
+set @deposits = 0;
+set @withdrawals = 0;
+
+INSERT INTO account values(204,1000.00),(205,-90.00),(206,-100.00);
+select @deposits as 'Deposit amt', @withdrawals as 'Withdrawal amt', @sum as 'Balance amt';
 
 
 *********************************************************************************************************************
+*QUE-11*
+=======
+Dedlock:
+opne shell:
+mysql -u root
+use <database_name>
+
+side:1
+
+lock tables p write;
+lock tables s write;
+
+side:2
+
+lock tables p write;
+lock tables s write;
+
 
 
 *********************************************************************************************************************
